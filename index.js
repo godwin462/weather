@@ -1,11 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const { default: mongoose } = require("mongoose");
-const weatherRouter = require("./routers/eatherRouter");
+const weatherRouter = require("./routers/weatherRouter");
+const cors = require("cors");
 
 const PORT = process.env.PORT || 2020;
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1/weather", weatherRouter);
